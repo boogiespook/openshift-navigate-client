@@ -1,0 +1,15 @@
+workshops .container .header {
+  display: flex;
+  align-items: flex-end;
+  color: #999999; }
+
+workshops .container .row {
+  margin-top: 2%;
+  align-content: flex-start; }
+
+workshops .container i.circle {
+  padding: 4px; }
+
+workshops .container svg {
+  width: 26px;
+  height: 26px; }

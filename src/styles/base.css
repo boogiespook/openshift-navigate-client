@@ -1,0 +1,38 @@
+html {
+  font-size: 16px; }
+
+form a {
+  margin-left: 5px; }
+
+.full-width {
+  width: 100%; }
+
+.right-float {
+  float: right; }
+
+.centered {
+  position: fixed;
+  /* or absolute */
+  top: 50%;
+  left: 50%; }
+
+.error {
+  border: 1px solid red; }
+
+body {
+  height: 100vh;
+  position: relative;
+  background-color: #f4f4f4; }
+
+.parentSize {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute; }
+
+.flex1 {
+  flex: 1 0 auto; }
+
+.preloadspinner {
+  z-index: 50000; }

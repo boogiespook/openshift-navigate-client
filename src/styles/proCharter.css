@@ -1,0 +1,7 @@
+procharter .container .header {
+  display: flex;
+  align-items: flex-end;
+  color: #999999; }
+
+procharter .container .opacity50 {
+  opacity: 0.3; }

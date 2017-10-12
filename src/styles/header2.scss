@@ -1,0 +1,80 @@
+$profileSize:96px;
+$profileSizeSmall:$profileSize*0.5;
+
+.profile {
+    width: $profileSize;
+    height: $profileSize;
+    border-radius: $profileSize/2;
+    background: #dad9db;
+    overflow: hidden;
+    &.small {
+        width: $profileSizeSmall;
+        height: $profileSizeSmall;
+        border-radius: $profileSizeSmall/2;
+    }
+    img {
+        width: 100%;
+    }
+}
+
+header2 {
+    .bg {
+        .intro {
+            height: 100px;
+            background: url(../images/bg-pattern.png) repeat-x;
+            background-color: #404043;
+            color: white;
+            font-weight: lighter;
+            .title {
+                font-size: 2rem;
+                display: flex;
+                align-items: center;
+                padding-top: 25px;
+                padding-bottom: 31px;
+                justify-content: center;
+                text-transform: uppercase;
+                .profile {
+                    margin-right: 20px;
+                }
+            }
+        }
+        .navLike {
+            background: #252527;
+            .container {
+                display: flex;
+                align-items: center;
+                height:67px;
+                .userInfo{
+                  display: flex;
+                  align-items: center;
+                  color:white;
+                  font-weight: lighter;
+                  >*{
+                    margin-right:12px;
+                  }
+                }
+            }
+        }
+    }
+}
+
+
+.headerNavItem {
+   padding-left: 10px;
+   padding-right: 10px;
+}
+
+.headerNavOuter {
+  text-align: center;
+  background-color: black;
+}
+
+.headerNavInner {
+  display: inline-block;
+}
+
+
+
+
+
+

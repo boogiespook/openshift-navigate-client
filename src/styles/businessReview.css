@@ -1,0 +1,24 @@
+businessReview .container .header {
+  display: flex;
+  align-items: flex-end;
+  color: #999999; }
+
+businessReview .collapsible-header {
+  color: #7d7d7d;
+  position: relative; }
+
+businessReview .collapsible-header i {
+  width: 7rem;
+  color: #7d7d7d;
+  margin-left: -70px; }
+
+businessReview .collapsible-header-right {
+  position: absolute;
+  right: 20px; }
+
+businessReview .collapsible-header-right span {
+  padding-right: 25px; }
+
+businessReview .collapsible-header img {
+  width: 27px;
+  margin-right: 35px; }

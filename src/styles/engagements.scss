@@ -1,0 +1,116 @@
+engagements {
+    .container {
+        .header {
+            display: flex;
+            align-items: flex-end;
+            color: rgba(153, 153, 153, 255);
+            .search {
+                input {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .noEngagement {
+            width: 500x;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 48px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .text {
+                font-weight: lighter;
+                margin-top: 1rem;
+            }
+        }
+        .collection{
+          margin-top:48px;
+          box-shadow: 0 3px 10px 0 rgba(0,0,0,0.6);
+          .collection-item{
+            display: flex;
+            align-items: center;
+            .profile{
+              margin-right:1rem;
+            }
+            .customerInfo{
+              flex:1 0 auto;
+              .customerStatus{
+                font-size:0.9em;
+                .status.inprogress{
+                  color:#007a87;
+                }
+                .light{
+                  color:#999999;
+                }
+              }
+            }
+          }
+        }
+    }
+    $newBtnLeft:85%;
+    $newBtnSize:56px;
+    $transTime:0.3s;
+    $transTime1:0.7s;
+    .newEngagement {
+        height: $newBtnSize;
+        width: $newBtnSize;
+        border-radius: $newBtnSize/2;
+        bottom: 8px;
+        left: $newBtnLeft;
+        position: fixed;
+        z-index: 10;
+        background-color: #2196F3;
+        transition: all cubic-bezier(0.4, 0, 0.2, 1) $transTime1;
+        transition-delay: $transTime;
+        display: flex;
+        align-items: center;
+        .newBtn {
+          flex-shrink: 0;
+            transition: all ease $transTime;
+        }
+        .container {
+          flex: 1 1 auto;
+          // transition-delay: $transTime+$transTime1;
+          transition: ease all 3s;
+          opacity: 0;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+            *{
+              color:white;
+            }
+            input{
+              border-bottom-color: white !important;
+              height:2rem;
+              margin-bottom:12px;
+              width:350px;
+            }
+            label.active{
+              color:white !important;
+              left:0;
+              font-weight: lighter;
+
+            }
+        }
+        &.expand {
+            .newBtn {
+                transform: rotate(450deg);
+
+            }
+            button{
+              box-shadow: none !important;
+            }
+            .container{
+              opacity: 1;
+            }
+            left:0;
+            width:100%;
+            bottom:0;
+            height: 64px;
+            border-radius: 0;
+        }
+    }
+    .customerName {
+      color: #007a87;
+    }
+}

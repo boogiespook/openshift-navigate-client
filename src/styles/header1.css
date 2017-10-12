@@ -1,0 +1,47 @@
+.profile {
+  width: 96px;
+  height: 96px;
+  border-radius: 48px;
+  background: #dad9db;
+  overflow: hidden; }
+  .profile.small {
+    width: 48px;
+    height: 48px;
+    border-radius: 24px; }
+  .profile img {
+    width: 100%; }
+
+header1 .bg .intro {
+  height: 331px;
+  background: url(../images/bg-pattern.png) repeat-x;
+  background-color: #404043;
+  color: white;
+  font-weight: lighter; }
+  header1 .bg .intro .title {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    padding-top: 96px;
+    padding-bottom: 31px;
+    justify-content: center;
+    text-transform: uppercase; }
+    header1 .bg .intro .title .profile {
+      margin-right: 20px; }
+
+header1 .bg .navLike {
+  background: #252527; }
+  header1 .bg .navLike .container {
+    display: flex;
+    align-items: center;
+    height: 67px; }
+    header1 .bg .navLike .container .userInfo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-weight: lighter; }
+      header1 .bg .navLike .container .userInfo > * {
+        margin-right: 12px; }
+
+.headerNavItem {
+  padding-left: 10px;
+  padding-right: 10px; }

@@ -1,0 +1,17 @@
+userStory .container .header {
+  display: flex;
+  align-items: flex-end;
+  color: #999999; }
+
+userStory .container .dependencybreadcrumb {
+  display: flex;
+  align-items: flex-end;
+  height: 80px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #2a9af3; }
+  userStory .container .dependencybreadcrumb .item {
+    padding-left: 10px;
+    color: white;
+    margin-top: auto;
+    margin-bottom: auto; }

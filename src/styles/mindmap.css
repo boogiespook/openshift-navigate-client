@@ -1,0 +1,8 @@
+rhmindmap .container .header {
+  display: flex;
+  align-items: flex-end;
+  color: #999999; }
+
+rhmindmap .show_mind_map {
+  width: 1300px;
+  height: 900px; }

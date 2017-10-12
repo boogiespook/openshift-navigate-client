@@ -1,0 +1,25 @@
+workshops {
+  .container {
+    .header {
+      display: flex;
+      align-items: flex-end;
+      color: rgba(153, 153, 153, 255);
+    }
+
+    .row {
+      margin-top: 2%;
+      align-content: flex-start;
+    }
+
+    i.circle {
+      padding: 4px;
+    }
+
+    svg {
+      width: 26px;
+      height: 26px;
+    }
+
+  }
+}
+

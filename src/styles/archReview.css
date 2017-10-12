@@ -1,0 +1,24 @@
+archReview .container .header {
+  display: flex;
+  align-items: flex-end;
+  color: #999999; }
+
+archReview .collapsible-header {
+  color: #7d7d7d;
+  position: relative; }
+
+archReview .collapsible-header i {
+  width: 7rem;
+  color: #7d7d7d;
+  margin-left: -70px; }
+
+archReview .collapsible-header-right {
+  position: absolute;
+  right: 20px; }
+
+archReview .collapsible-header-right span {
+  padding-right: 25px; }
+
+archReview .collapsible-header img {
+  width: 27px;
+  margin-right: 35px; }

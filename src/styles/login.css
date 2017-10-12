@@ -1,0 +1,29 @@
+login .loginForm {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: 280px;
+  width: 40%;
+  max-width: 600px;
+  background: white;
+  box-shadow: 0 10px 50px 1px rgba(0, 0, 0, 0.5); }
+  login .loginForm .loginHead {
+    height: 200px;
+    background: url(../images/login-form-bg.png);
+    background-color: #252527;
+    position: relative; }
+    login .loginForm .loginHead .profile {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      bottom: 0; }
+  login .loginForm form {
+    margin-top: 48px;
+    padding: 26px;
+    padding-top: 0; }
+    login .loginForm form button {
+      display: block;
+      margin-bottom: 16px;
+      width: 100%; }
+    login .loginForm form .forgetPwd {
+      text-align: center; }

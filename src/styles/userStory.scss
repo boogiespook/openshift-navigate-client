@@ -1,0 +1,28 @@
+userStory {
+  .container {
+    .header {
+      display: flex;
+      align-items: flex-end;
+      color: rgba(153, 153, 153, 255);
+    }
+
+    .dependencybreadcrumb {
+      display: flex;
+      align-items: flex-end;
+      height: 80px;
+      padding-left: 10px;
+      padding-right: 10px;
+      background-color: #2a9af3;
+
+
+      .item {
+        padding-left: 10px;
+        color: white;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+
+    }
+  }
+}
+

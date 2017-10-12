@@ -1,0 +1,149 @@
+/*
+ * react-circular-progressbar styles
+ *
+ * All of the styles in this file are optional and configurable!
+ */
+dashboard .container .header {
+  display: flex;
+  align-items: flex-end;
+  color: #999999; }
+
+dashboard .container .ProCharterPanel {
+  background-color: #404043;
+  color: #ffffff; }
+
+dashboard .container .WorkshopsPanel {
+  background-color: #404043;
+  padding-right: 40px; }
+
+dashboard .container .WorkshopsPanel span.caret {
+  color: white; }
+
+dashboard .container .workshop-select-dropdown {
+  position: relative;
+  cursor: pointer;
+  background-color: #404043;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  height: 3rem;
+  line-height: 3rem;
+  width: 120%;
+  font-size: 1rem;
+  margin: 0 0 20px 0;
+  padding: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+dashboard .container input.select-dropdown {
+  border-bottom: none; }
+
+dashboard .container .progressPanel {
+  width: 60%;
+  height: 60%;
+  background-color: #404043;
+  display: block;
+  margin: 10% auto; }
+
+dashboard .container .CircularProgressbar {
+  /*
+       * This fixes an issue where the CircularProgressbar svg has
+       * 0 width inside a "display: flex" container, and thus not visible.
+       *
+       * If you're not using "display: flex", you can remove this style.
+       */ }
+
+dashboard .container .CircularProgressbar .CircularProgressbar-path {
+  stroke: #3fc774;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease 0s; }
+
+dashboard .container .CircularProgressbar .CircularProgressbar-trail {
+  stroke: #252527; }
+
+dashboard .container .CircularProgressbar .CircularProgressbar-text {
+  fill: #ffffff;
+  font-size: 16px;
+  dominant-baseline: middle;
+  text-anchor: middle; }
+
+dashboard .container .wrap {
+  background: #1d1f20;
+  width: 100%;
+  height: 100%; }
+
+dashboard .container .label {
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  padding: 4px 30px;
+  color: white; }
+
+dashboard .container .top-left {
+  position: absolute;
+  transform: rotate(-90deg) scaleX(-1);
+  transform-origin: top left; }
+  dashboard .container .top-left .content {
+    transform: scaleX(-1); }
+
+dashboard .container .collection-item {
+  background-color: #f4f4f4; }
+
+dashboard .container .collection {
+  border-style: none; }
+
+dashboard .container .arch-review i {
+  height: 50px;
+  width: 50px; }
+
+dashboard .container .arch-review i div {
+  height: 50px;
+  width: 50px; }
+
+dashboard .container .arch-review-row .title {
+  font-size: 1rem;
+  color: #838383; }
+
+dashboard .container .arch-review-row .text {
+  font-size: 0.8rem;
+  color: #d4d4d4; }
+
+dashboard .container .status {
+  margin-left: -20px; }
+
+dashboard .container .flex {
+  display: flex; }
+
+dashboard .container .arch-review-list {
+  padding-left: 10px; }
+
+dashboard .container .sunny i {
+  color: blue; }
+
+dashboard .container .sunny .square {
+  background-color: #2a9af3; }
+
+dashboard .container .cloudy .square {
+  background-color: #3f51b5; }
+
+dashboard .container .rainy .square {
+  background-color: #275478; }
+
+dashboard .container .thunder .square {
+  background-color: #152e42; }
+
+dashboard .container .incomplete .square {
+  background-color: #333336; }
+
+dashboard .container .arch-review img {
+  padding: 20px; }
+
+dashboard .container .arch-review .incomplete img {
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 18px;
+  padding-bottom: 17px; }
+
+dashboard .container .fab-color {
+  background-color: #2a9af3; }
