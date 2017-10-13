@@ -10,6 +10,7 @@ import UserStoriesReducer from "./reducer_userStories";
 import Configurations from "./reducer_configuration";
 import DashboardReducer from "./reducer_dashboard";
 import NextStepsReducer from "./reducer_nextSteps";
+import MindMapReducer from "./reducer_mindmap";
 
 // NOTE: see mapDispatchToProps as a way to connect an action creator to all reducers
 
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
   form: formReducer,    // if we dont have this then input fields are not working
   dashboardState: DashboardReducer,
   nextSteps: NextStepsReducer,
-  businessReview: BusinessReviewReducer
+  businessReview: BusinessReviewReducer,
+  mapDetails: MindMapReducer
 });
 
 export default rootReducer;

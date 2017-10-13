@@ -32,7 +32,9 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+
+    },
   "devDependencies": {
     "react": "15.6.2",
     "react-dom": "^15.5.4",

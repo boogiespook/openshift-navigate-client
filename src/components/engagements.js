@@ -33,6 +33,7 @@ class Engagements extends Component {
     this.toggleSpinner();
     this.props.createEngagement(this.state.newEngagementName, (response) => {
       this.toggleSpinner();
+      this.forceUpdate();
     });
 
 
@@ -75,12 +76,14 @@ class Engagements extends Component {
   }
 
   goToEngagement(engagement) {
+    console.log('here:::::');
     this.props.history.push(`/dashboard/${engagement.engagementId}`);
   }
 
   // <CollectionItem href={`/dashboard/${engagement.engagementId}`} key={engagement.engagementId} className="animated bounce ">
 
   renderEngagements() {
+    debugger;
     return _.map(this.props.engagements, engagement => {
       return (
         <CollectionItem onClick={()=>this.goToEngagement(engagement)} key={engagement.engagementId} className="animated bounce">
