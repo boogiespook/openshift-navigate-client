@@ -8,3 +8,8 @@ npm run start
 
 ## Building for Prod
 npm run build
+
+
+# Docker Commands
+docker build -t navigate-client .
+docker run --name navigate-client -d navigate-client
