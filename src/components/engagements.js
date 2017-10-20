@@ -83,7 +83,6 @@ class Engagements extends Component {
   // <CollectionItem href={`/dashboard/${engagement.engagementId}`} key={engagement.engagementId} className="animated bounce ">
 
   renderEngagements() {
-    debugger;
     return _.map(this.props.engagements, engagement => {
       return (
         <CollectionItem onClick={()=>this.goToEngagement(engagement)} key={engagement.engagementId} className="animated bounce">
@@ -127,7 +126,11 @@ class Engagements extends Component {
 
   render() {
 
-
+    if (this.props.engagements.error) {
+      console.log('Found error ' + JSON.stringify(this.props.engagements.error));
+      this.props.history.push('/');
+      return (<div></div>);
+    }
 
     const curUser={
       email:"user@email.com"

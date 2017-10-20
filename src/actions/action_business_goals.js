@@ -3,7 +3,7 @@ import axios from 'axios';
 export const GET_BUSINESS_GOALS = 'get_business_goals';
 export const SET_BUSINESS_GOALS = 'set_business_goals';
 
-const ROOT_URL = "https://127.0.0.1:8001";
+const ROOT_URL = "https://localhost:8001";
 //const ROOT_URL = "https://openshift-navigate-cloud25-openshiftnavigate.int.open.paas.redhat.com";
 //const ROOT_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
 
@@ -13,7 +13,8 @@ export function getBusinessGoals(id) {
 
   console.log('calling get business goals');
 
-  const request = axios.get(`${ROOT_URL}/businessgoals?engagementId=${id}`);
+  var url = `${ROOT_URL}/businessgoals?engagementId=${id}`;
+  const request = axios.get(url, {withCredentials: true});
 
   return {
     type: GET_BUSINESS_GOALS,
@@ -28,7 +29,7 @@ export function setBusinessGoals(engagementId, newGoals) {
     goals: newGoals
    };
 
-  console.log('setBusinessGoals requestPayload: ', requestPayload);
+  console.log('setBusinessGoals requestPayload: ', requestPayload, {withCredentials: true});
   axios.put(`${ROOT_URL}/businessgoals`, requestPayload);
 
   return {

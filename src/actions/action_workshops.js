@@ -7,7 +7,7 @@ import axios from 'axios';
 export const GET_WORKSHOPS = 'get_workshops';
 export const UPDATE_WORKSHOP = 'update_workshop';
 
-const ROOT_URL = "https://127.0.0.1:8001";
+const ROOT_URL = "https://localhost:8001";
 //const ROOT_URL = "https://openshift-navigate-cloud25-openshiftnavigate.int.open.paas.redhat.com";
 //const ROOT_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
 
@@ -17,7 +17,9 @@ export function getWorkShops(id) {
 
     // Note: axios returns a promise, which is intercepted by redux-promise middleware, once the request
     // is fullfilled, it is passed to all the reducers as regular object.
-    const request = axios.get(`${ROOT_URL}/workshops?engagementId=${id}`);
+
+    var url = `${ROOT_URL}/workshops?engagementId=${id}`;
+    const request = axios.get(url, {withCredentials: true});
 
     return {
         type: GET_WORKSHOPS,
@@ -29,7 +31,7 @@ export function updateWorkshop(updatedWorkshop, callback) {
     // Note: axios returns a promise, which is intercepted by redux-promise middleware, once the request
     // is fullfilled, it is passed to all the reducers as regular object.
     console.log("updateWorkshop requestPayload: ", updatedWorkshop);
-    const request = axios.put(`${ROOT_URL}/workshops`, updatedWorkshop)
+    const request = axios.put(`${ROOT_URL}/workshops`, updatedWorkshop, {withCredentials: true})
         .then((response) => {
             console.log("updateWorkshop response: ", response);
             callback(response);

@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { login } from '../actions/action_auth';
 import { Row, Input } from 'react-materialize';
-import {HeaderLogin} from './header1';
+import { HeaderLogin } from './header1';
 
 class Login extends Component {
 
@@ -20,9 +20,13 @@ class Login extends Component {
   }
 
   onSubmit(values) {
-    this.props.login(values, () => {
-      this.props.history.push('/engagements');
-    });
+    // this.props.login(values, () => {
+    //   // this.props.history.push('/engagements');
+    // });
+    // this.props.login(values);
+    // axios.get('https://127.0.0.1:8001/auth/login');
+
+    window.location = 'https://127.0.0.1:8001/auth/login';
   }
 
   render() {

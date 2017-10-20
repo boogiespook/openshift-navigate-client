@@ -3,7 +3,16 @@ import { GET_ENGAGEMENTS, CREATE_ENGAGEMENT } from '../actions/action_engagement
 // State argument is not application state, only the state this
 // reducer is responsible for
 export default function(state = {}, action) {
-  switch (action.type) {
+
+  const { type, error } = action;
+
+  if (error) {
+    return {
+      'error' :error
+    };
+  }
+
+  switch (type) {
     case GET_ENGAGEMENTS:
       return action.payload.data;
     case CREATE_ENGAGEMENT:
