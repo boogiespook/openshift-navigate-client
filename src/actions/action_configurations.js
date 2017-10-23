@@ -6,8 +6,8 @@
 import axios from 'axios';
 export const GET_CONFIGURATION = 'get_configuration';
 
-const ROOT_URL = "https://localhost:8001";
-//const ROOT_URL = "https://openshift-navigate-cloud25-openshiftnavigate.int.open.paas.redhat.com";
+// const ROOT_URL = "https://localhost:8001";
+const ROOT_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";
 //const ROOT_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
 
 
