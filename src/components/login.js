@@ -7,16 +7,17 @@ import { HeaderLogin } from './header1';
 
 class Login extends Component {
 
-  // componentDidMount() {
-  //   var that = this;
+  componentDidMount() {
+    var that = this;
 
-  //   this.props.isAuthenticated()
-  //     .then((authenticated) => {
-  //       if (authenticated) {
-  //         console.log('redirecting to landing page');
-  //       }
-  //     });
-  // }
+    this.props.isAuthenticated()
+      .then((authenticated) => {
+        if (authenticated) {
+          console.log('redirecting to landing page');
+          this.props.history.push('/engagements');
+        }
+      });
+  }
 
   renderField(field) {
     return (
@@ -87,7 +88,7 @@ export default reduxForm({
   validate,
   form: 'LoginForm'
 })(
-  connect(null, { login })(Login)
+  connect(null, { login, isAuthenticated })(Login)
 );
 
 

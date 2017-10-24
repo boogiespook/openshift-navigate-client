@@ -26,7 +26,6 @@ export function getEngagements() {
 
     axios.get(`${ROOT_URL}/engagement`, {withCredentials: true})
       .then((response) => {
-        console.log('response !!! ');
         dispatch({
             type: GET_ENGAGEMENTS,
             payload: response
@@ -48,8 +47,6 @@ export function getEngagements() {
         // dispatch({type: ADD_ERROR, error: err});
       });
   }
-
-
 }
 
 export function createEngagement(name, callback) {
