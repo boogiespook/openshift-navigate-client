@@ -27,7 +27,10 @@ docker run -p 8080:8080 nginx-sample-app
 
 
 
-
+npm run build
+copy in nginx file
+ac
+push
 
 s2i build https://github.com/boogiespook/openshift-navigate-client.git --ref=testsaml --context-dir=build registry.access.redhat.com/rhscl/nginx-18-rhel7 briangallagher/os-nav-client-3
 
