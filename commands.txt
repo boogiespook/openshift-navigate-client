@@ -26,4 +26,13 @@ You can then run the resulting image via:
 docker run -p 8080:8080 nginx-sample-app
 
 
+
+
+
+s2i build https://github.com/boogiespook/openshift-navigate-client.git --ref=testsaml --context-dir=build registry.access.redhat.com/rhscl/nginx-18-rhel7 briangallagher/os-nav-client-2
+
+docker run -p 8080:8080 briangallagher/os-nav-client-2
+
+docker push briangallagher/os-nav-client-2
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

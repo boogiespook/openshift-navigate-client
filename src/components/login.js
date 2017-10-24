@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { login } from '../actions/action_auth';
+import { login, isAuthenticated } from '../actions/action_auth';
 import { Row, Input } from 'react-materialize';
 import { HeaderLogin } from './header1';
 
 class Login extends Component {
+
+  // componentDidMount() {
+  //   var that = this;
+
+  //   this.props.isAuthenticated()
+  //     .then((authenticated) => {
+  //       if (authenticated) {
+  //         console.log('redirecting to landing page');
+  //       }
+  //     });
+  // }
 
   renderField(field) {
     return (
@@ -26,7 +37,8 @@ class Login extends Component {
     // this.props.login(values);
     // axios.get('https://127.0.0.1:8001/auth/login');
 
-    window.location = 'https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com/auth/login';
+    // window.location = 'https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com/auth/login';
+    window.location = 'https://localhost:8001/auth/login';
   }
 
   render() {
