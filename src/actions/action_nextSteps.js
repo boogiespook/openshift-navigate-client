@@ -3,7 +3,8 @@ import axios from 'axios';
 export const GET_NEXT_STEPS = 'get_NEXT_STEPS';
 export const CREATE_NEXT_STEPS = 'create_NEXT_STEPS';
 
-const ROOT_URL = "https://localhost:8001";
+//const ROOT_URL = "https://localhost:8001";
+const ROOT_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";
 //const ROOT_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
 
 

@@ -37,8 +37,8 @@ class Login extends Component {
     // this.props.login(values);
     // axios.get('https://127.0.0.1:8001/auth/login');
 
-    // window.location = 'https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com/auth/login';
-    window.location = 'https://localhost:8001/auth/login';
+    window.location = 'https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com/auth/login';
+    // window.location = 'https://localhost:8001/auth/login';
   }
 
   render() {
