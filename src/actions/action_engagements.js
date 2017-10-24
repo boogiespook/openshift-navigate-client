@@ -5,7 +5,11 @@ export const CREATE_ENGAGEMENT = 'create_engagement';
 export const FETCH_RESOURCES_FAIL = 'fetch_resources_fail';
 
 //const ROOT_URL = "https://localhost:8001";
+const ROOT_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";//const ROOT_URL = "https://localhost:8001";
+
 const ROOT_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";
+
+
 //const ROOT_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
 
 
@@ -27,8 +31,8 @@ export function getEngagements() {
     axios.get(`${ROOT_URL}/engagement`, {withCredentials: true})
       .then((response) => {
         dispatch({
-            type: GET_ENGAGEMENTS,
-            payload: response
+          type: GET_ENGAGEMENTS,
+          payload: response
         });
 
       })      // Async action failed...

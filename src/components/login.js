@@ -8,15 +8,21 @@ import { HeaderLogin } from './header1';
 class Login extends Component {
 
   componentDidMount() {
-    var that = this;
 
-    this.props.isAuthenticated()
-      .then((authenticated) => {
-        if (authenticated) {
-          console.log('redirecting to landing page');
-          this.props.history.push('/engagements');
-        }
-      });
+    console.log('checking if user authenticated');
+    // this.props.isAuthenticated()
+    //   .then(() => {
+    //     console.log('redirecting to landing page');
+    //     this.props.history.push('/engagements');
+    //   });
+
+    this.props.isAuthenticated((authenticated) => {
+      if (authenticated) {
+        console.log('redirecting to landing page');
+        this.props.history.push('/engagements');
+      }
+    });
+
   }
 
   renderField(field) {

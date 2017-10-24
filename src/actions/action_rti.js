@@ -4,7 +4,11 @@ export const GET_RTI = 'get_rti';
 export const CREATE_RTI = 'create_rti';
 
 //const ROOT_URL = "https://localhost:8001";
+const ROOT_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";//const ROOT_URL = "https://localhost:8001";
+
 const ROOT_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";
+
+
 //const ROOT_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
 
 

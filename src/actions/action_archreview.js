@@ -3,9 +3,8 @@ export const GET_ARCH_REVIEW = 'get_archreview';
 export const UPDATE_ARCH_REVIEW = 'update_archreview';
 
 //const ROOT_URL = "https://localhost:8001";
+const ROOT_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";//const ROOT_URL = "https://localhost:8001";
 const ROOT_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";
-//const ROOT_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
-
 
 export function getArchReview(id) {
   // The callback is useful because we want to navigate the user only after the post comes back
