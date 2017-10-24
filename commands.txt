@@ -1,0 +1,29 @@
+docker build -t briangallagher/navigate-client:v2 .
+
+docker push briangallagher/navigate-client
+
+# detached
+docker run -d -p 8080:8080 navigate-client
+
+# foreground
+docker run -p 8080:8080 navigate-client
+
+# remote
+docker run --name navigate-client -p 8080:8080 briangallagher/navigate-client:v2
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+This is a S2I  rhel base image:
+To use it, install S2I: https://github.com/openshift/source-to-image
+Sample invocation:
+s2i build https://github.com/sclorg/nginx-container.git --context-dir=1.8/test/test-app/ rhscl/nginx-18-rhel7 nginx-sample-app
+###### $ s2i build https://github.com/sclorg/nginx-container.git --context-dir=1.8/test/test-app/ registry.access.redhat.com/rhscl/nginx-18-rhel7 nginx-sample-app-brian
+You can then run the resulting image via:
+docker run -p 8080:8080 nginx-sample-app
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

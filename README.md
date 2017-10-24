@@ -12,4 +12,9 @@ npm run build
 
 # Docker Commands
 docker build -t navigate-client .
-docker run --name navigate-client -d navigate-client
+
+# detached
+docker run -d -p 8080:8080 navigate-client
+
+# foreground
+docker run -p 8080:8080 navigate-client
