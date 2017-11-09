@@ -32,10 +32,22 @@ copy in nginx file
 ac
 push
 
-s2i build https://github.com/boogiespook/openshift-navigate-client.git --ref=testsaml --context-dir=build registry.access.redhat.com/rhscl/nginx-18-rhel7 briangallagher/os-nav-client-3
+s2i build https://github.com/boogiespook/openshift-navigate-client.git --ref=testsaml --context-dir=build registry.access.redhat.com/rhscl/nginx-18-rhel7 briangallagher/os-nav-client-4
 
 docker run -p 8080:8080 briangallagher/os-nav-client-3
 
-docker push briangallagher/os-nav-client-3
+docker push briangallagher/os-nav-client-4
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+s2i build https://github.com/boogiespook/openshift-navigate-client.git --ref=testsaml --context-dir=build registry.access.redhat.com/rhscl/nginx-18-rhel7 briangallagher/os-nav-client-4
+
+oc new-app registry.access.redhat.com/rhscl/nginx-112-rhel7~https://github.com/boogiespook/openshift-navigate-client.git --name=myapp
+
+
+
+oc new-app registry.access.redhat.com/rhscl/nginx-112-rhel7~https://github.com/briangallagher/ostestclient.git#dev --name=navigateclient --context-dir=build
+
+
+
