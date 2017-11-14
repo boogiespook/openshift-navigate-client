@@ -2,9 +2,11 @@ import axios from 'axios';
 
 export const GET_INIT_CONFIG = 'get_init_config';
 
-const ROOT_URL = "https://localhost:8001";
-//const ROOT_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const ROOT_URL = "https://localhost:8001";
-//const ROOT_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
+// This is the node.js server that is serving the static files.
+// Not the remote API. If node if not serving the files we can assume
+// that we are running locally.
+const ROOT_URL = "http://localhost:3000";
+
 
 
 export function getInitConfig() {
@@ -18,10 +20,14 @@ export function getInitConfig() {
 
   // }
 
+  var defaultLocalConfig = {
+    'data' : {
+      'env' : {
+        'API_URL': 'https://localhost:8001'
+      }
+    }
+  }
 
-  // The callback is useful because we want to navigate the user only after the post comes back
-
-  console.log('calling get Engagements');
 
   // const request = axios.get(`${ROOT_URL}/engagement`);
 
@@ -31,9 +37,9 @@ export function getInitConfig() {
   // };
 
   return function (dispatch) {
-    console.log('calling create Engagements action');
+    console.log('calling get init');
 
-    axios.get(`${ROOT_URL}/engagement`, {withCredentials: true})
+    axios.get(`${ROOT_URL}/init`)
       .then((response) => {
         dispatch({
           type: GET_INIT_CONFIG,
@@ -43,6 +49,15 @@ export function getInitConfig() {
       })      // Async action failed...
       .catch((err) => {
 
+        // TODO: see here for best practice on error handling
+        // https://stackoverflow.com/questions/34403269/what-is-the-best-way-to-deal-with-a-fetch-error-in-react-redux
+
+        console.log('Error retrieving init config');
+
+        dispatch({
+          type: GET_INIT_CONFIG,
+          payload: defaultLocalConfig
+        });
       });
   }
 

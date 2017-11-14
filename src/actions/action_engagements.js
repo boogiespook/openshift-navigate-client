@@ -4,7 +4,7 @@ export const GET_ENGAGEMENTS = 'get_engagements';
 export const CREATE_ENGAGEMENT = 'create_engagement';
 export const FETCH_RESOURCES_FAIL = 'fetch_resources_fail';
 
-const ROOT_URL = "https://localhost:8001";
+var ROOT_URL = "https://localhost:8001";
 //const ROOT_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const ROOT_URL = "https://localhost:8001";
 //const ROOT_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
 
@@ -21,8 +21,18 @@ export function getEngagements() {
   //   payload: request
   // };
 
-  return function (dispatch) {
+  return function (dispatch, getState) {
     console.log('calling create Engagements action');
+
+
+    var data = getState();
+    debugger;
+    ROOT_URL = data.initConfig.env.API_URL;
+
+    console.log('ROOT URL:::: ' + ROOT_URL);
+    console.log('ROOT URL:::: ' + ROOT_URL);
+    console.log('ROOT URL:::: ' + ROOT_URL);
+    console.log('ROOT URL:::: ' + ROOT_URL);
 
     axios.get(`${ROOT_URL}/engagement`, {withCredentials: true})
       .then((response) => {
@@ -51,8 +61,18 @@ export function getEngagements() {
 
 export function createEngagement(name, callback) {
 
-  return function (dispatch) {
+  return function (dispatch, getState) {
     console.log('calling create Engagements action');
+
+    debugger;
+    var data = getState();
+    ROOT_URL = data.initConfig.env.API_URL;
+
+    console.log('ROOT URL:::: ' + ROOT_URL);
+    console.log('ROOT URL:::: ' + ROOT_URL);
+    console.log('ROOT URL:::: ' + ROOT_URL);
+    console.log('ROOT URL:::: ' + ROOT_URL);
+
 
     let requestPayload = {
       'name': name

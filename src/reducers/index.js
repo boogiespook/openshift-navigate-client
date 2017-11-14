@@ -11,10 +11,12 @@ import Configurations from "./reducer_configuration";
 import DashboardReducer from "./reducer_dashboard";
 import NextStepsReducer from "./reducer_nextSteps";
 import MindMapReducer from "./reducer_mindmap";
+import InitConfigReducer from "./reducer_init_config";
 
 // NOTE: see mapDispatchToProps as a way to connect an action creator to all reducers
 
 const rootReducer = combineReducers({
+  initConfig: InitConfigReducer,
   engagements: EngagementsReducer,
   workshops: WorkshopsReducer,
   userstories: UserStoriesReducer,
