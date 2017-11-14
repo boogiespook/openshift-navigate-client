@@ -1,0 +1,12 @@
+// exports.get = function () {
+//   return {
+//     'env' : {
+//       'API_URL': 'https://localhost:8001'
+//     }
+//   }
+// }
+
+# This is a comment
+ENV1=THANKS
+ENV2=FOR ALL
+ENV3=THE FISH
