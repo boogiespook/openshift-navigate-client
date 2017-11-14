@@ -1,2 +1,0 @@
-add to cloud isauthenticated
-test redirection locally

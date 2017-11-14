@@ -7,8 +7,8 @@ import axios from 'axios';
 export const GET_WORKSHOPS = 'get_workshops';
 export const UPDATE_WORKSHOP = 'update_workshop';
 
-//const ROOT_URL = "https://localhost:8001";
-const ROOT_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";
+const ROOT_URL = "https://localhost:8001";
+//const ROOT_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";
 
 //const ROOT_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
 

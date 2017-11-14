@@ -76,7 +76,6 @@ class Engagements extends Component {
   }
 
   goToEngagement(engagement) {
-    console.log('here:::::');
     this.props.history.push(`/dashboard/${engagement.engagementId}`);
   }
 
