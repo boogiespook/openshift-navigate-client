@@ -57,6 +57,10 @@ export function saveReview(id, values, category, callback) {
           type: UPDATE_ARCH_REVIEW,
           payload: response
         });
+        callback();
       })
   }
 }
+
+
+

@@ -34,7 +34,7 @@ export function getMapDetails(id, callback) {
           payload: response
         });
         debugger;
-        callback(response);
+        callback(response.data);
       })
   }
 }

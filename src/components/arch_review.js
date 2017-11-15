@@ -66,12 +66,10 @@ class ArchReview extends Component {
 
   saveArchReview(values, category) {
     this.toggleSpinner();
-    this.props.saveReview(this.props.match.params.id, values, category)
-      .then(() => {
-        this.toggleSpinner();
-      });
+    this.props.saveReview(this.props.match.params.id, values, category, () => {
+      this.toggleSpinner();
+    })
   }
-
 
   renderRandomWeather(category) {
     var rand = Math.random();

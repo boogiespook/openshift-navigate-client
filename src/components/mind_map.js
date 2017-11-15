@@ -18,8 +18,8 @@ class MindMap2 extends Component {
 
     this.props.getMapDetails(this.props.match.params.id, (data) => {
       debugger;
-      data.payload.data.option.hierarchyRule.ROOT.getChildren = function () { return []; }
-      MindMapMain.show(data.payload.data.option, data.payload.data.mind);
+      data.option.hierarchyRule.ROOT.getChildren = function () { return []; }
+      MindMapMain.show(data.option, data.mind);
     })
     // .then((data) => {
     //   // hack
