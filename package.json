@@ -63,6 +63,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "serve": "serve -s build",
-    "start": "node application.js"
+    "start": "npm run build && node application.js"
   }
 }
