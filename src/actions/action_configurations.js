@@ -6,9 +6,9 @@
 import axios from 'axios';
 export const GET_CONFIGURATION = 'get_configuration';
 
-const ROOT_URL = "https://localhost:8001";
-//const ROOT_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const ROOT_URL = "https://localhost:8001";
-//const ROOT_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
+const API_URL = "https://localhost:8001";
+//const API_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const API_URL = "https://localhost:8001";
+//const API_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
 
 
 export function getConfigurationData(id) {
@@ -16,7 +16,7 @@ export function getConfigurationData(id) {
 
     // Note: axios returns a promise, which is intercepted by redux-promise middleware, once the request
     // is fullfilled, it is passed to all the reducers as regular object.
-    const request = axios.get(`${ROOT_URL}/engagementconfig?configId=${id}`, {withCredentials: true});
+    const request = axios.get(`${API_URL}/engagementconfig?configId=${id}`, {withCredentials: true});
 
     return {
         type: GET_CONFIGURATION,

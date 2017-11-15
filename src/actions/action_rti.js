@@ -3,9 +3,9 @@ import axios from 'axios';
 export const GET_RTI = 'get_rti';
 export const CREATE_RTI = 'create_rti';
 
-const ROOT_URL = "https://localhost:8001";
-//const ROOT_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const ROOT_URL = "https://localhost:8001";
-//const ROOT_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
+const API_URL = "https://localhost:8001";
+//const API_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const API_URL = "https://localhost:8001";
+//const API_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
 
 
 export function getRti(engagementId) {
@@ -13,7 +13,7 @@ export function getRti(engagementId) {
   // The callback is useful because we want to navigate the user only after the post comes back
   console.log('Calling get RTI');
 
-  const request = axios.get(`${ROOT_URL}/rti`, {withCredentials: true});
+  const request = axios.get(`${API_URL}/rti`, {withCredentials: true});
 
   return {
     type: GET_RTI,
@@ -32,7 +32,7 @@ export function createRti(engagementId, rtiCode, callback) {
     };
 
     console.log('creating rti requestPayload: ', requestPayload, {withCredentials: true});
-    axios.post(`${ROOT_URL}/rti`, requestPayload)
+    axios.post(`${API_URL}/rti`, requestPayload)
       .then((response) => {
         dispatch({
             type: CREATE_RTI,

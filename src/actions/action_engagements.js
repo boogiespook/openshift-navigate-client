@@ -4,17 +4,41 @@ export const GET_ENGAGEMENTS = 'get_engagements';
 export const CREATE_ENGAGEMENT = 'create_engagement';
 export const FETCH_RESOURCES_FAIL = 'fetch_resources_fail';
 
-var ROOT_URL = "https://localhost:8001";
-//const ROOT_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const ROOT_URL = "https://localhost:8001";
-//const ROOT_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
+var API_URL = "https://localhost:8001";
+//const API_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const API_URL = "https://localhost:8001";
+//const API_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
 
+function getFromLocalStorage () {
+  var config;
+  config = localStorage.getItem('initConfig');
+  try {
+    return JSON.parse(config);
+  } catch (e) {
+    console.log('Problem parsing initConfig from local storage');
+    return null;
+  }
+  // localStorage.setItem('initConfig', JSON.stringify(data));
+}
+
+function getApiUrl (getState) {
+  debugger;
+  var data = getState();
+  var initConfig;
+  if (data) {
+    initConfig = data.initConfig;
+  }
+  if (!data || !initConfig || !initConfig.env) {
+    initConfig = getFromLocalStorage();
+  }
+  return initConfig.env.API_URL;
+}
 
 export function getEngagements() {
   // The callback is useful because we want to navigate the user only after the post comes back
 
   console.log('calling get Engagements');
 
-  // const request = axios.get(`${ROOT_URL}/engagement`);
+  // const request = axios.get(`${API_URL}/engagement`);
 
   // return {
   //   type: GET_ENGAGEMENTS,
@@ -24,17 +48,16 @@ export function getEngagements() {
   return function (dispatch, getState) {
     console.log('calling create Engagements action');
 
+    // data = getFromLocalStorage();
+    // API_URL = data.initConfig.env.API_URL;
+    API_URL = getApiUrl(getState);
 
-    var data = getState();
-    debugger;
-    ROOT_URL = data.initConfig.env.API_URL;
+    console.log('API_URL:::: ' + API_URL);
+    console.log('API_URL:::: ' + API_URL);
+    console.log('API_URL:::: ' + API_URL);
+    console.log('API_URL:::: ' + API_URL);
 
-    console.log('ROOT URL:::: ' + ROOT_URL);
-    console.log('ROOT URL:::: ' + ROOT_URL);
-    console.log('ROOT URL:::: ' + ROOT_URL);
-    console.log('ROOT URL:::: ' + ROOT_URL);
-
-    axios.get(`${ROOT_URL}/engagement`, {withCredentials: true})
+    axios.get(`${API_URL}/engagement`, {withCredentials: true})
       .then((response) => {
         dispatch({
           type: GET_ENGAGEMENTS,
@@ -66,12 +89,12 @@ export function createEngagement(name, callback) {
 
     debugger;
     var data = getState();
-    ROOT_URL = data.initConfig.env.API_URL;
+    API_URL = data.initConfig.env.API_URL;
 
-    console.log('ROOT URL:::: ' + ROOT_URL);
-    console.log('ROOT URL:::: ' + ROOT_URL);
-    console.log('ROOT URL:::: ' + ROOT_URL);
-    console.log('ROOT URL:::: ' + ROOT_URL);
+    console.log('ROOT URL:::: ' + API_URL);
+    console.log('ROOT URL:::: ' + API_URL);
+    console.log('ROOT URL:::: ' + API_URL);
+    console.log('ROOT URL:::: ' + API_URL);
 
 
     let requestPayload = {
@@ -79,7 +102,7 @@ export function createEngagement(name, callback) {
     };
 
     console.log('creating engagement requestPayload: ', requestPayload, {withCredentials: true});
-    axios.post(`${ROOT_URL}/engagement`, requestPayload)
+    axios.post(`${API_URL}/engagement`, requestPayload)
       .then((response) => {
         console.log('response !!! ');
         dispatch({

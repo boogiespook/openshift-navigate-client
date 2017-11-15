@@ -3,9 +3,9 @@ import axios from 'axios';
 export const GET_BUSINESS_GOALS = 'get_business_goals';
 export const SET_BUSINESS_GOALS = 'set_business_goals';
 
-const ROOT_URL = "https://localhost:8001";
-//const ROOT_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const ROOT_URL = "https://localhost:8001";
-//const ROOT_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
+const API_URL = "https://localhost:8001";
+//const API_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const API_URL = "https://localhost:8001";
+//const API_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
 
 
 export function getBusinessGoals(id) {
@@ -13,7 +13,7 @@ export function getBusinessGoals(id) {
 
   console.log('calling get business goals');
 
-  var url = `${ROOT_URL}/businessgoals?engagementId=${id}`;
+  var url = `${API_URL}/businessgoals?engagementId=${id}`;
   const request = axios.get(url, {withCredentials: true});
 
   return {
@@ -30,7 +30,7 @@ export function setBusinessGoals(engagementId, newGoals) {
    };
 
   console.log('setBusinessGoals requestPayload: ', requestPayload, {withCredentials: true});
-  axios.put(`${ROOT_URL}/businessgoals`, requestPayload);
+  axios.put(`${API_URL}/businessgoals`, requestPayload);
 
   return {
     type: SET_BUSINESS_GOALS,

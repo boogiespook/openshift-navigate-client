@@ -3,14 +3,14 @@ export const LOGIN = 'login';
 export const IS_AUTHENTICATED = 'is_authenticated';
 export const FETCH_RESOURCES_FAIL = 'fetch_resources_fail';
 
-const ROOT_URL = "https://localhost:8001";
-//const ROOT_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const ROOT_URL = "https://localhost:8001";
-//const ROOT_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
+const API_URL = "https://localhost:8001";
+//const API_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const API_URL = "https://localhost:8001";
+//const API_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
 
 
 // export function login(credentials, callback) {
   // The callback is useful because we want to navigate the user only after the post comes back
-  // const request = axios.post(`${ROOT_URL}/auth/login`, credentials)
+  // const request = axios.post(`${API_URL}/auth/login`, credentials)
   //   .then(() => callback());
 
   // return {
@@ -21,7 +21,7 @@ const ROOT_URL = "https://localhost:8001";
 export function login(credentials) {
   console.log('making call to server');
   // The callback is useful because we want to navigate the user only after the post comes back
-  const request = axios.get(`${ROOT_URL}/auth/login`);
+  const request = axios.get(`${API_URL}/auth/login`);
 
   return {
     type: LOGIN,
@@ -36,7 +36,7 @@ export function isAuthenticated(callback) {
   return function (dispatch) {
     console.log('calling isAuthenticated action');
 
-    axios.get(`${ROOT_URL}/auth/isauthenticated`, {withCredentials: true})
+    axios.get(`${API_URL}/auth/isauthenticated`, {withCredentials: true})
       .then((response) => {
         console.log('back from isauthenticated');
         // dispatch({
