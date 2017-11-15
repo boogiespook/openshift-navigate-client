@@ -1,0 +1,120 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftWebConsole
+  creationTimestamp: '2017-11-10T15:05:10Z'
+  generation: 40
+  labels:
+    app: os-navigate-nodejs
+  name: os-navigate-nodejs
+  namespace: openshiftnavigatedev
+  resourceVersion: '44537070'
+  selfLink: >-
+    /oapi/v1/namespaces/openshiftnavigatedev/deploymentconfigs/os-navigate-nodejs
+  uid: 8c12d4d2-c628-11e7-a169-068b91999b6e
+spec:
+  replicas: 1
+  selector:
+    deploymentconfig: os-navigate-nodejs
+  strategy:
+    activeDeadlineSeconds: 21600
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: os-navigate-nodejs
+        deploymentconfig: os-navigate-nodejs
+    spec:
+      containers:
+        - env:
+            - name: MONGODB_USER
+              value: briangal
+            - name: MONGODB_PASSWORD
+              value: pa55word
+            - name: MONGODB_HOST
+              value: 'ds115625.mlab.com:15625/'
+            - name: MONGODB_DB_NAME
+              value: navigate
+            - name: NODE_ENV
+              value: DEV
+            - name: SAML_ISSUER
+              value: >-
+                http://os-navigate-client-openshiftnavigatedev.e4ff.pro-eu-west-1.openshiftapps.com/
+            - name: SAML_ENTRY_POINT
+              value: 'https://capriza.github.io/samling/samling.html'
+            - name: SAML_CALLBACK_URL
+              value: >-
+                http://os-navigate-nodejs-openshiftnavigatedev.e4ff.pro-eu-west-1.openshiftapps.com/auth/login/callback
+            - name: SAML_REDIRECT
+              value: >-
+                http://os-navigate-client-openshiftnavigatedev.e4ff.pro-eu-west-1.openshiftapps.com/
+            - name: AUTHN_SIGN_KEY
+            - name: RH_SIGN_KEY
+          image: >-
+            docker-registry.default.svc:5000/openshiftnavigatedev/os-navigate-nodejs@sha256:652fe23c1a621adfa4212f60dfcb545f663866a1ab6c7900b3b4a6558502d366
+          imagePullPolicy: Always
+          name: os-navigate-nodejs
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  test: false
+  triggers:
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+          - os-navigate-nodejs
+        from:
+          kind: ImageStreamTag
+          name: 'os-navigate-nodejs:latest'
+          namespace: openshiftnavigatedev
+        lastTriggeredImage: >-
+          docker-registry.default.svc:5000/openshiftnavigatedev/os-navigate-nodejs@sha256:652fe23c1a621adfa4212f60dfcb545f663866a1ab6c7900b3b4a6558502d366
+      type: ImageChange
+    - type: ConfigChange
+status:
+  availableReplicas: 1
+  conditions:
+    - lastTransitionTime: '2017-11-15T16:13:29Z'
+      lastUpdateTime: '2017-11-15T16:13:29Z'
+      message: Deployment config has minimum availability.
+      status: 'True'
+      type: Available
+    - lastTransitionTime: '2017-11-15T16:41:04Z'
+      lastUpdateTime: '2017-11-15T16:41:06Z'
+      message: replication controller "os-navigate-nodejs-20" successfully rolled out
+      reason: NewReplicationControllerAvailable
+      status: 'True'
+      type: Progressing
+  details:
+    causes:
+      - imageTrigger:
+          from:
+            kind: ImageStreamTag
+            name: 'os-navigate-nodejs:latest'
+            namespace: openshiftnavigatedev
+        type: ImageChange
+    message: image change
+  latestVersion: 20
+  observedGeneration: 40
+  readyReplicas: 1
+  replicas: 1
+  unavailableReplicas: 0
+  updatedReplicas: 1
+
