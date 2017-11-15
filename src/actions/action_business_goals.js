@@ -23,7 +23,7 @@ function getApiUrl (getState) {
   if (!data || !initConfig || !initConfig.env) {
     initConfig = getFromLocalStorage();
   }
-  return initConfig.env.API_URL;
+  return ((initConfig && initConfig.env && initConfig.env.API_URL) || null);
 }
 
 export function getBusinessGoals(id) {

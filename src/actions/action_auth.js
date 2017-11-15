@@ -24,7 +24,7 @@ function getApiUrl (getState) {
   if (!data || !initConfig || !initConfig.env) {
     initConfig = getFromLocalStorage();
   }
-  return initConfig.env.API_URL;
+  return ((initConfig && initConfig.env && initConfig.env.API_URL) || null);
 }
 
 export function login(credentials) {
@@ -62,6 +62,10 @@ export function isAuthenticated(callback) {
   return function (dispatch, getState) {
     console.log('calling isAuthenticated action');
     var API_URL = getApiUrl(getState);
+
+    if (!API_URL) {
+      return callback(false);
+    }
 
     axios.get(`${API_URL}/auth/isauthenticated`, {withCredentials: true})
       .then((response) => {
