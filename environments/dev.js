@@ -1,7 +1,7 @@
 exports.get = function () {
   return {
     'env' : {
-      'API_URL': 'https://localhost:8001'
+      'API_URL': 'http://os-navigate-nodejs-openshiftnavigatedev.e4ff.pro-eu-west-1.openshiftapps.com'
     }
   }
 }
