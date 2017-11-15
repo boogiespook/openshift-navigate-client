@@ -16,12 +16,16 @@ class MindMap2 extends Component {
   componentDidMount() {
     var that = this;
 
-    this.props.getMapDetails(this.props.match.params.id)
-      .then((data) => {
-        // hack
-        data.payload.data.option.hierarchyRule.ROOT.getChildren = function () { return []; }
-        MindMapMain.show(data.payload.data.option, data.payload.data.mind);
-      });
+    this.props.getMapDetails(this.props.match.params.id, (data) => {
+      debugger;
+      data.payload.data.option.hierarchyRule.ROOT.getChildren = function () { return []; }
+      MindMapMain.show(data.payload.data.option, data.payload.data.mind);
+    })
+    // .then((data) => {
+    //   // hack
+    //   data.payload.data.option.hierarchyRule.ROOT.getChildren = function () { return []; }
+    //   MindMapMain.show(data.payload.data.option, data.payload.data.mind);
+    // });
   }
 
   render() {

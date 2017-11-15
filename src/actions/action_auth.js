@@ -2,39 +2,66 @@ import axios from 'axios';
 export const LOGIN = 'login';
 export const IS_AUTHENTICATED = 'is_authenticated';
 export const FETCH_RESOURCES_FAIL = 'fetch_resources_fail';
+export const INIT_LOGIN = 'init_login';
 
-const API_URL = "https://localhost:8001";
-//const API_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const API_URL = "https://localhost:8001";
-//const API_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
+function getFromLocalStorage () {
+  var config;
+  config = localStorage.getItem('initConfig');
+  try {
+    return JSON.parse(config);
+  } catch (e) {
+    console.log('Problem parsing initConfig from local storage');
+    return null;
+  }
+}
 
-
-// export function login(credentials, callback) {
-  // The callback is useful because we want to navigate the user only after the post comes back
-  // const request = axios.post(`${API_URL}/auth/login`, credentials)
-  //   .then(() => callback());
-
-  // return {
-  //   type: LOGIN,
-  //   payload: request
-  // };
+function getApiUrl (getState) {
+  var data = getState();
+  var initConfig;
+  if (data) {
+    initConfig = data.initConfig;
+  }
+  if (!data || !initConfig || !initConfig.env) {
+    initConfig = getFromLocalStorage();
+  }
+  return initConfig.env.API_URL;
+}
 
 export function login(credentials) {
   console.log('making call to server');
-  // The callback is useful because we want to navigate the user only after the post comes back
-  const request = axios.get(`${API_URL}/auth/login`);
+  return function (dispatch, getState) {
+    var API_URL = getApiUrl(getState);
+    axios.get(`${API_URL}/auth/login`)
+      .then((response) => {
+        dispatch({
+          type: LOGIN,
+          payload: response
+        });
+      })
+  }
+}
 
-  return {
-    type: LOGIN,
-    payload: request
-  };
+export function initLogin(credentials) {
+  console.log('making call to server');
+  return function (dispatch, getState) {
+    var API_URL = getApiUrl(getState);
+
+    window.location = API_URL + '/auth/login';
+
+    dispatch({
+      type: INIT_LOGIN,
+      payload: null
+    });
+  }
 }
 
 export function isAuthenticated(callback) {
   console.log('making call to server, isAuthenticated');
   // The callback is useful because we want to navigate the user only after the post comes back
 
-  return function (dispatch) {
+  return function (dispatch, getState) {
     console.log('calling isAuthenticated action');
+    var API_URL = getApiUrl(getState);
 
     axios.get(`${API_URL}/auth/isauthenticated`, {withCredentials: true})
       .then((response) => {

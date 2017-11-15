@@ -1,18 +1,41 @@
 import axios from 'axios';
 export const GET_MIND_MAP = 'get_mindmap';
 
-const API_URL = "https://localhost:8001";
-//const API_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const API_URL = "https://localhost:8001";
-//const API_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
+function getFromLocalStorage () {
+  var config;
+  config = localStorage.getItem('initConfig');
+  try {
+    return JSON.parse(config);
+  } catch (e) {
+    console.log('Problem parsing initConfig from local storage');
+    return null;
+  }
+}
 
+function getApiUrl (getState) {
+  var data = getState();
+  var initConfig;
+  if (data) {
+    initConfig = data.initConfig;
+  }
+  if (!data || !initConfig || !initConfig.env) {
+    initConfig = getFromLocalStorage();
+  }
+  return initConfig.env.API_URL;
+}
 
-export function getMapDetails(id) {
-
-  const request = axios.get(`${API_URL}/mindmap`, {withCredentials: true});
-
-  return {
-    type: GET_MIND_MAP,
-    payload: request
-  };
+export function getMapDetails(id, callback) {
+  return function (dispatch, getState) {
+    var API_URL = getApiUrl(getState);
+    axios.get(`${API_URL}/mindmap`, {withCredentials: true})
+      .then((response) => {
+        dispatch({
+          type: GET_MIND_MAP,
+          payload: response
+        });
+        debugger;
+        callback(response);
+      })
+  }
 }
 

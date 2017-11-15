@@ -3,33 +3,56 @@ import axios from 'axios';
 export const GET_NEXT_STEPS = 'get_NEXT_STEPS';
 export const CREATE_NEXT_STEPS = 'create_NEXT_STEPS';
 
-const API_URL = "https://localhost:8001";
-//const API_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const API_URL = "https://localhost:8001";
-//const API_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
+function getFromLocalStorage () {
+  var config;
+  config = localStorage.getItem('initConfig');
+  try {
+    return JSON.parse(config);
+  } catch (e) {
+    console.log('Problem parsing initConfig from local storage');
+    return null;
+  }
+}
 
+function getApiUrl (getState) {
+  var data = getState();
+  var initConfig;
+  if (data) {
+    initConfig = data.initConfig;
+  }
+  if (!data || !initConfig || !initConfig.env) {
+    initConfig = getFromLocalStorage();
+  }
+  return initConfig.env.API_URL;
+}
 
 export function getNextSteps(id) {
-
-  // The callback is useful because we want to navigate the user only after the post comes back
   console.log('Calling get nextsteps');
 
-  const request = axios.get(`${API_URL}/nextsteps?engagementId=${id}`, {withCredentials: true});
+  return function (dispatch, getState) {
+    var API_URL = getApiUrl(getState);
 
-  return {
-    type: GET_NEXT_STEPS,
-    payload: request
-  };
+    axios.get(`${API_URL}/nextsteps?engagementId=${id}`, {withCredentials: true})
+      .then((response) => {
+        dispatch({
+          type: GET_NEXT_STEPS,
+          payload: response
+        });
+      })
+  }
 }
 
 export function createNextSteps(payload) {
 
-  console.log('calling create nextsteps action with payload: ' + JSON.stringify(payload));
+  return function (dispatch, getState) {
+    var API_URL = getApiUrl(getState);
 
-  console.log('creating nextsteps requestPayload: ', payload);
-  const request = axios.post(`${API_URL}/nextsteps`, payload, {withCredentials: true});
-
-  return {
-    type: CREATE_NEXT_STEPS,
-    payload: request
-  };
+    axios.post(`${API_URL}/nextsteps`, payload, {withCredentials: true})
+      .then((response) => {
+        dispatch({
+          type: CREATE_NEXT_STEPS,
+          payload: response
+        });
+      })
+  }
 }

@@ -7,38 +7,61 @@ import axios from 'axios';
 export const GET_WORKSHOPS = 'get_workshops';
 export const UPDATE_WORKSHOP = 'update_workshop';
 
-const API_URL = "https://localhost:8001";
-//const API_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";
+function getFromLocalStorage () {
+  var config;
+  config = localStorage.getItem('initConfig');
+  try {
+    return JSON.parse(config);
+  } catch (e) {
+    console.log('Problem parsing initConfig from local storage');
+    return null;
+  }
+}
 
-//const API_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
+function getApiUrl (getState) {
+  var data = getState();
+  var initConfig;
+  if (data) {
+    initConfig = data.initConfig;
+  }
+  if (!data || !initConfig || !initConfig.env) {
+    initConfig = getFromLocalStorage();
+  }
+  return initConfig.env.API_URL;
+}
 
 export function getWorkShops(id) {
-    console.log('getWorkShops for engagement Id: ', id);
+  console.log('getWorkShops for engagement Id: ', id);
 
-    // Note: axios returns a promise, which is intercepted by redux-promise middleware, once the request
-    // is fullfilled, it is passed to all the reducers as regular object.
+  return function (dispatch, getState) {
+    var API_URL = getApiUrl(getState);
 
-    var url = `${API_URL}/workshops?engagementId=${id}`;
-    const request = axios.get(url, {withCredentials: true});
-
-    return {
-        type: GET_WORKSHOPS,
-        payload: request
-    };
+    axios.get(`${API_URL}/workshops?engagementId=${id}`, {withCredentials: true})
+      .then((response) => {
+        dispatch({
+          type: GET_WORKSHOPS,
+          payload: response
+        });
+      })
+  }
 }
 
 export function updateWorkshop(updatedWorkshop, callback) {
-    // Note: axios returns a promise, which is intercepted by redux-promise middleware, once the request
-    // is fullfilled, it is passed to all the reducers as regular object.
-    console.log("updateWorkshop requestPayload: ", updatedWorkshop);
-    const request = axios.put(`${API_URL}/workshops`, updatedWorkshop, {withCredentials: true})
-        .then((response) => {
-            console.log("updateWorkshop response: ", response);
-            callback(response);
-        });
+  // Note: axios returns a promise, which is intercepted by redux-promise middleware, once the request
+  // is fullfilled, it is passed to all the reducers as regular object.
+  console.log("updateWorkshop requestPayload: ", updatedWorkshop);
 
-    return {
-        type: UPDATE_WORKSHOP,
-        payload: request
-    }
+
+  return function (dispatch, getState) {
+    var API_URL = getApiUrl(getState);
+
+    axios.put(`${API_URL}/workshops`, updatedWorkshop, {withCredentials: true})
+      .then((response) => {
+        dispatch({
+          type: UPDATE_WORKSHOP,
+          payload: response
+        });
+        callback(response);
+      })
+  }
 }

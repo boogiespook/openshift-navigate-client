@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { login, isAuthenticated } from '../actions/action_auth';
+import { login, isAuthenticated, initLogin } from '../actions/action_auth';
 import { Row, Input } from 'react-materialize';
 import { HeaderLogin } from './header1';
 
@@ -38,14 +38,9 @@ class Login extends Component {
   }
 
   onSubmit(values) {
-    // this.props.login(values, () => {
-    //   // this.props.history.push('/engagements');
-    // });
-    // this.props.login(values);
-    // axios.get('https://127.0.0.1:8001/auth/login');
-
-    // window.location = 'https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com/auth/login';
-    window.location = 'https://localhost:8001/auth/login';
+    // TODO: should go through an action creator
+    // window.location = 'https://localhost:8001/auth/login';
+    this.props.initLogin();
   }
 
   render() {
@@ -94,7 +89,7 @@ export default reduxForm({
   validate,
   form: 'LoginForm'
 })(
-  connect(null, { login, isAuthenticated })(Login)
+  connect(null, { login, isAuthenticated, initLogin })(Login)
 );
 
 

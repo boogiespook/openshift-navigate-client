@@ -5,24 +5,12 @@ export const GET_INIT_CONFIG = 'get_init_config';
 // This is the node.js server that is serving the static files.
 // Not the remote API. If node if not serving the files we can assume
 // that we are running locally.
-const API_URL = "http://localhost:3000";
-
 
 function saveToLocalStorage (data) {
   localStorage.setItem('initConfig', JSON.stringify(data));
 }
 
-
 export function getInitConfig() {
-
-  // console.log('calling get init config');
-
-  // return function (dispatch, getState) {
-  //   console.log('calling get state');
-  //   debugger;
-  //   var data = getState();
-
-  // }
 
   var defaultLocalConfig = {
     'env' : {
@@ -30,17 +18,10 @@ export function getInitConfig() {
     }
   }
 
-
-  // const request = axios.get(`${API_URL}/engagement`);
-
-  // return {
-  //   type: GET_ENGAGEMENTS,
-  //   payload: request
-  // };
-
   return function (dispatch) {
     console.log('calling get init');
 
+    // local path ok, will go back to same server
     axios.get(`/init`)
       .then((response) => {
 
@@ -70,7 +51,5 @@ export function getInitConfig() {
         });
       });
   }
-
-
 
 }

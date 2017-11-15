@@ -35,18 +35,7 @@ class ArchReview extends Component {
 
   componentDidMount() {
     // console.log('componentDidMount ');
-    this.props.getArchReview(this.props.match.params.id)
-      .then(() => {
-        // console.log('back from get');
-        // console.log(JSON.stringify(this.props.archReview));
-
-        // let newState = {};
-        // _.map(this.props.archReview.categories, category => {
-        //   newState['expanded-'+category.name] = "false";
-        // })
-        // newState.saving = false;
-        // this.setState(newState);
-      });
+    this.props.getArchReview(this.props.match.params.id);
     this.saveArchReview = this.saveArchReview.bind(this);
     this.toggleSpinner = this.toggleSpinner.bind(this);
 

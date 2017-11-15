@@ -3,37 +3,63 @@ import axios from 'axios';
 export const GET_BUSINESS_GOALS = 'get_business_goals';
 export const SET_BUSINESS_GOALS = 'set_business_goals';
 
-const API_URL = "https://localhost:8001";
-//const API_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const API_URL = "https://localhost:8001";
-//const API_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
+function getFromLocalStorage () {
+  var config;
+  config = localStorage.getItem('initConfig');
+  try {
+    return JSON.parse(config);
+  } catch (e) {
+    console.log('Problem parsing initConfig from local storage');
+    return null;
+  }
+}
 
+function getApiUrl (getState) {
+  var data = getState();
+  var initConfig;
+  if (data) {
+    initConfig = data.initConfig;
+  }
+  if (!data || !initConfig || !initConfig.env) {
+    initConfig = getFromLocalStorage();
+  }
+  return initConfig.env.API_URL;
+}
 
 export function getBusinessGoals(id) {
   // The callback is useful because we want to navigate the user only after the post comes back
 
   console.log('calling get business goals');
 
-  var url = `${API_URL}/businessgoals?engagementId=${id}`;
-  const request = axios.get(url, {withCredentials: true});
+  return function (dispatch, getState) {
+    var API_URL = getApiUrl(getState);
 
-  return {
-    type: GET_BUSINESS_GOALS,
-    payload: request
-  };
+    axios.get(`${API_URL}/businessgoals?engagementId=${id}`, {withCredentials: true})
+      .then((response) => {
+        dispatch({
+          type: GET_BUSINESS_GOALS,
+          payload: response
+        });
+      })
+  }
 }
 
 export function setBusinessGoals(engagementId, newGoals) {
   // The callback is useful because we want to navigate the user only after the post comes back
    let requestPayload = {
-    engagementId: engagementId,
-    goals: newGoals
+     engagementId: engagementId,
+     goals: newGoals
    };
 
-  console.log('setBusinessGoals requestPayload: ', requestPayload, {withCredentials: true});
-  axios.put(`${API_URL}/businessgoals`, requestPayload);
+  return function (dispatch, getState) {
+    var API_URL = getApiUrl(getState);
 
-  return {
-    type: SET_BUSINESS_GOALS,
-    payload: newGoals
-  };
+    axios.put(`${API_URL}/businessgoals`, requestPayload, {withCredentials: true})
+      .then((response) => {
+        dispatch({
+          type: SET_BUSINESS_GOALS,
+          payload: newGoals
+        });
+      })
+  }
 }

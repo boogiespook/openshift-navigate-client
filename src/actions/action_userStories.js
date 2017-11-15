@@ -5,29 +5,47 @@
 import axios from 'axios';
 export const GET_USERSTORIES = 'get_userstories';
 
-const API_URL = "https://localhost:8001";
-//const API_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const API_URL = "https://localhost:8001";
-//const API_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
+function getFromLocalStorage () {
+  var config;
+  config = localStorage.getItem('initConfig');
+  try {
+    return JSON.parse(config);
+  } catch (e) {
+    console.log('Problem parsing initConfig from local storage');
+    return null;
+  }
+}
 
+function getApiUrl (getState) {
+  var data = getState();
+  var initConfig;
+  if (data) {
+    initConfig = data.initConfig;
+  }
+  if (!data || !initConfig || !initConfig.env) {
+    initConfig = getFromLocalStorage();
+  }
+  return initConfig.env.API_URL;
+}
 
 export function getUserStories(engagementId, workshopName, callback) {
-    console.log("Action getUserStories: ", engagementId);
+  console.log("Action getUserStories: ", engagementId);
 
-    return function(dispatch) {
-        //You need to return your promise.
-        return axios.get(`${API_URL}/userstory?engagementId=${engagementId}&workshopName=${workshopName}`, {withCredentials: true})
-            .then(response => {
-                console.log("getUserStories get response: ", response);
-                callback(response);
+  return function (dispatch, getState) {
+    var API_URL = getApiUrl(getState);
 
-                dispatch({
-                    type: GET_USERSTORIES,
-                    payload: response
-                });
+    axios.get(`${API_URL}/userstory?engagementId=${engagementId}&workshopName=${workshopName}`, {withCredentials: true})
+      .then(response => {
+        console.log("getUserStories get response: ", response);
+        callback(response);
 
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    }
+        dispatch({
+            type: GET_USERSTORIES,
+            payload: response
+        });
+      })
+      .catch((error) => {
+          console.log(error);
+      })
+  }
 }

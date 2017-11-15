@@ -4,10 +4,6 @@ export const GET_ENGAGEMENTS = 'get_engagements';
 export const CREATE_ENGAGEMENT = 'create_engagement';
 export const FETCH_RESOURCES_FAIL = 'fetch_resources_fail';
 
-var API_URL = "https://localhost:8001";
-//const API_URL = "https://openshiftnavcloud-openshiftnavigate.int.open.paas.redhat.com";const API_URL = "https://localhost:8001";
-//const API_URL = "https://psdev-hbosx7gau4hzdbzau4oipixq-evals-dev.mbaas1.tom.redhatmobile.com";
-
 function getFromLocalStorage () {
   var config;
   config = localStorage.getItem('initConfig');
@@ -17,11 +13,9 @@ function getFromLocalStorage () {
     console.log('Problem parsing initConfig from local storage');
     return null;
   }
-  // localStorage.setItem('initConfig', JSON.stringify(data));
 }
 
 function getApiUrl (getState) {
-  debugger;
   var data = getState();
   var initConfig;
   if (data) {
@@ -48,13 +42,7 @@ export function getEngagements() {
   return function (dispatch, getState) {
     console.log('calling create Engagements action');
 
-    // data = getFromLocalStorage();
-    // API_URL = data.initConfig.env.API_URL;
-    API_URL = getApiUrl(getState);
-
-    console.log('API_URL:::: ' + API_URL);
-    console.log('API_URL:::: ' + API_URL);
-    console.log('API_URL:::: ' + API_URL);
+    var API_URL = getApiUrl(getState);
     console.log('API_URL:::: ' + API_URL);
 
     axios.get(`${API_URL}/engagement`, {withCredentials: true})
@@ -87,15 +75,9 @@ export function createEngagement(name, callback) {
   return function (dispatch, getState) {
     console.log('calling create Engagements action');
 
-    debugger;
-    var data = getState();
-    API_URL = data.initConfig.env.API_URL;
+    var API_URL = getApiUrl(getState);
 
-    console.log('ROOT URL:::: ' + API_URL);
-    console.log('ROOT URL:::: ' + API_URL);
-    console.log('ROOT URL:::: ' + API_URL);
-    console.log('ROOT URL:::: ' + API_URL);
-
+    console.log('API_URL:::: ' + API_URL);
 
     let requestPayload = {
       'name': name

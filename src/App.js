@@ -26,19 +26,14 @@ import thunk from 'redux-thunk';
 // const createStoreWithMiddleware = applyMiddleware(promise, thunk)(createStore);
 
 class App extends Component {
-  constructor(props){
-    super(props);
-    this.state={
-      // store:createStoreWithMiddleware(reducers)
-    }
-  }
-
 
   componentDidMount() {
     console.log('Component did mount');
-    debugger;
     this.props.getInitConfig();
   }
+
+  // TODO: delay rendering until init called
+  // https://stackoverflow.com/questions/33097064/react-delayed-rendering
 
   render() {
 
